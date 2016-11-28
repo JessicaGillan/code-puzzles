@@ -1,14 +1,24 @@
 require_relative './2015_1_prime_factorization.rb'
+################### FIRST SOLUTION , LONG RUN TIME ########################
+# def present_counter(house)
+#   factors = [house]
 
-def present_counter(house)
-  factors = [house]
+#   (house/2).downto(1) do |divisor|
+#     factors << divisor if house%divisor == 0
+#   end
 
-  (house/2).downto(1) do |divisor|
-    factors << divisor if house%divisor == 0
-  end
+#   factors.inject(:+) * 10
+# end
 
-  factors.inject(:+) * 10
-end
+# def first_house_with_at_least(input)
+#   house = 1
+#   loop do
+#     return house if present_counter(house) >= input
+#     house += 1
+#   end
+# end
+
+###########################################################################
 
 # find prime factorization
 # sum primes from exp 0 to exp in prime factorization
@@ -58,14 +68,6 @@ def present_counter_pf(house)
   sum_factors( find_prime_factorization(house) ) * 10
 end
 
-def first_house_with_at_least(input)
-  house = 1
-  loop do
-    return house if present_counter(house) >= input
-    house += 1
-  end
-end
-
 def first_house_with_at_least_pf(input)
   house = 1
   loop do
@@ -100,38 +102,13 @@ def benchmark(n)
   # puts "iterations*sum: #{iterations*sum}"
 end
 
-# p PrimeFactorization::primes
-# p find_prime_factorization(28)
-# p PrimeFactorization::primes
-# p result = find_prime_factorization(9000)
-# p PrimeFactorization::primes
-# p find_prime_factorization(9000)
-# 30420
-
-# a little under n^2
-# 3 0s = 0.353
-# 4 0s = 4.537
-# 5 0s = 341.65 (5.69m)
-# 6 0s ~ 9.5 hrs?
-# p first_house_with_at_least 3600000
-
 # 3 0s = 0.186s , pry 0.06
 # 4 0s = 1.079s, 0.99 (10080) 1.69 (skip primes)
 # 5 0s = 37.083s (90720) 59.422s (skip primes)
 # 6 0s = ~ 57 min?
 # present_counter_pf(90720) => 8.7 sec
-#
-# 90720.is_prime?
-# puts "done w/is_prime?"
-p first_house_with_at_least_pf 36000000
-# 831600
+
+# p first_house_with_at_least_pf 36000000
+# 831600 # RIGHT ANSWER
 # [Finished in 2318.606s]
 
-# p find_prime_factorization(36)
-# p sum_factors( find_prime_factorization(149970) ) This is shit, takes forev
-
-# p sum_factors( find_prime_factorization(90720) ) # 24800
-
-# 90720 -> 365904
-
-# p sum_factors( find_prime_factorization(161896) )
