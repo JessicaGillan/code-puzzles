@@ -1,5 +1,12 @@
 require_relative './2015_1_prime_factorization.rb'
 
+# This version finds a number from it's sum of factors instead of looping through numbers 
+# and seeing what their sum of factors are.
+# It is much faster then looping, BUT it finds the number whose sum of factors is exactly 36000000
+# whereas the problem wants the first house whose sum of factors is >= 36000000, so this result is too high.
+# how can I use this approach but find >= range?
+
+
 def find_num_from_sof(sum_of_factors, prime_seed)
   sums, prime_seed_final = find_sums(sum_of_factors, prime_seed)
   factors = find_factors(sums, prime_seed_final)
@@ -87,28 +94,19 @@ def populate_list( prime_seed )
   PrimeFactorization::prime_sums_of_powers_upto(prime_seed).values.flatten.uniq.sort
 end
 
-
-#
 # p find_sums(112, list_of_sums) #8,14 -> 91
 # p find_num_from_sof(112, 1)
-# # #
+
 # p find_num_from_sof(91, 1) #7,13 -> 36
-# #
-# # # p find_sums(224, list_of_sums)
-# p find_num_from_sof(224, 1) #4,7,8 (one answer) 84
-# #
+
+# p find_num_from_sof(224, 1) #4,7,8 -> 84
+
 # p find_num_from_sof(3600, 1)# [6, 15, 40, 1] (1080)
-#
+
 # p find_num_from_sof(36000, 1) #
 # [40, 60, 15]
-# "prime_seed: 59"
-# "prime: 3"
-# "exp: 3"
-# "prime: 59"
-# "exp: 1"
-# "prime: 2"
-# "exp: 3"
 # 12744
+
 
 p find_num_from_sof(360000, 1) #60, 400, 15] 161896  (90720)
 # [60, 400, 15]
