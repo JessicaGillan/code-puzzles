@@ -24,3 +24,22 @@ describe 'present_counter' do
     expect(present_counter(9)).to eq 130
   end
 end
+
+describe 'present_counter_pf' do
+  it "can count presents delivered to houses" do
+    expect(present_counter_pf(1)).to eq 10
+    expect(present_counter_pf(2)).to eq 30
+    expect(present_counter_pf(3)).to eq 40
+    expect(present_counter_pf(4)).to eq 70
+    expect(present_counter_pf(5)).to eq 60
+    expect(present_counter_pf(6)).to eq 120
+    expect(present_counter_pf(7)).to eq 80
+    expect(present_counter_pf(8)).to eq 150
+    expect(present_counter_pf(9)).to eq 130
+    expect(present_counter_pf(10)).to eq 180
+    expect(present_counter_pf(11)).to eq 120
+    expect(present_counter_pf(12)).to eq 280
+    expect(present_counter_pf(13)).to eq 140
+    expect(present_counter_pf(14)).to eq 240
+  end
+end
