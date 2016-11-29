@@ -1,6 +1,6 @@
 require_relative './2015_1_prime_factorization.rb'
 
-# This version finds a number from it's sum of factors instead of looping through numbers 
+# This version finds a number from it's sum of factors instead of looping through numbers
 # and seeing what their sum of factors are.
 # It is much faster then looping, BUT it finds the number whose sum of factors is exactly 36000000
 # whereas the problem wants the first house whose sum of factors is >= 36000000, so this result is too high.
@@ -108,7 +108,7 @@ end
 # 12744
 
 
-p find_num_from_sof(360000, 1) #60, 400, 15] 161896  (90720)
+# p find_num_from_sof(360000, 1) #60, 400, 15] 161896  (90720)
 # [60, 400, 15]
 # "prime_seed: 59"
 # "prime: 59"
@@ -126,3 +126,19 @@ p find_num_from_sof(360000, 1) #60, 400, 15] 161896  (90720)
 # 3015313 !!!! Too high!!!
 
 # 831600 CORRECT!!!!!!!!!
+
+def find_house(n)
+  houses = Array.new( n/10 ){ 0 }
+
+  (n / 10).times do |i|
+    (i..( n/10 - 1 )).step( i + 1 ) do |j|
+      house[j] += ( i+1 ) * 10
+    end
+  end
+
+  house.find_index{ |presents| presents >= n } + 1
+end
+
+p find_house(36000000)
+# 831600
+# [Finished in 8.454s]
