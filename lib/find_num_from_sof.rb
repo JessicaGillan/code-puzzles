@@ -132,11 +132,11 @@ def find_house(n)
 
   (n / 10).times do |i|
     (i..( n/10 - 1 )).step( i + 1 ) do |j|
-      house[j] += ( i+1 ) * 10
+      houses[j] += ( i+1 ) * 10
     end
   end
 
-  house.find_index{ |presents| presents >= n } + 1
+  houses.find_index{ |presents| presents >= n } + 1
 end
 
 p find_house(36000000)
